@@ -1,6 +1,6 @@
 # BUP CSE Fest 2026 Preliminary — Sample Cases Output Difference Report
 
-> Generated automatically by `test_cases.py` on 2026-09-18 22:18:31
+> Generated automatically by `test_cases.py` on 2026-09-18 22:31:31
 > **Test Source:** `BUP_CSE_FEST_2026_Preli_Public_Sample_Cases.json` | **Execution Mode:** `llm`
 
 ## 1. Executive Summary & Scorecard
@@ -42,7 +42,7 @@ Linear Programming (LP) problems frequently have **degenerate optimal solutions*
 
 ### Case `SAMPLE-01`: Solar cleaning + distractor
 
-- **Execution Latency:** `2749.1 ms` | **HTTP Status:** `200` | **Overall Verdict:** `EQUIVALENT_OPTIMAL`
+- **Execution Latency:** `2103.2 ms` | **HTTP Status:** `200` | **Overall Verdict:** `EQUIVALENT_OPTIMAL`
 - **Operator Notes:**
   - `[0]` *"Facilities will wash the rooftop solar panels from noon until 2 PM. During cleaning, usable solar should be treated as roughly 25% of the forecast."*
   - `[1]` *"The sports office moved next month's registration deadline."*
@@ -88,7 +88,7 @@ Linear Programming (LP) problems frequently have **degenerate optimal solutions*
 
 ### Case `SAMPLE-02`: Battery charging maintenance
 
-- **Execution Latency:** `1828.3 ms` | **HTTP Status:** `200` | **Overall Verdict:** `EQUIVALENT_OPTIMAL`
+- **Execution Latency:** `1396.3 ms` | **HTTP Status:** `200` | **Overall Verdict:** `EQUIVALENT_OPTIMAL`
 - **Operator Notes:**
   - `[0]` *"The battery charger will be isolated from 2 AM until 5 AM for electrical maintenance."*
 
@@ -134,7 +134,7 @@ Linear Programming (LP) problems frequently have **degenerate optimal solutions*
 
 ### Case `SAMPLE-03`: Emergency reserve as percentage
 
-- **Execution Latency:** `1700.5 ms` | **HTTP Status:** `200` | **Overall Verdict:** `EQUIVALENT_OPTIMAL`
+- **Execution Latency:** `1683.6 ms` | **HTTP Status:** `200` | **Overall Verdict:** `EQUIVALENT_OPTIMAL`
 - **Operator Notes:**
   - `[0]` *"Keep at least 50% of the battery capacity stored in the battery from 6 PM until 9 PM for emergency operations."*
 
@@ -180,7 +180,7 @@ Linear Programming (LP) problems frequently have **degenerate optimal solutions*
 
 ### Case `SAMPLE-04`: No-discharge protection test
 
-- **Execution Latency:** `1639.3 ms` | **HTTP Status:** `200` | **Overall Verdict:** `EQUIVALENT_OPTIMAL`
+- **Execution Latency:** `1599.7 ms` | **HTTP Status:** `200` | **Overall Verdict:** `EQUIVALENT_OPTIMAL`
 - **Operator Notes:**
   - `[0]` *"For protection testing, the battery must not discharge from 6 PM until 8 PM."*
 
@@ -234,7 +234,7 @@ Linear Programming (LP) problems frequently have **degenerate optimal solutions*
 
 ### Case `SAMPLE-05`: Temporary feeder grid cap
 
-- **Execution Latency:** `2148.0 ms` | **HTTP Status:** `200` | **Overall Verdict:** `EQUIVALENT_OPTIMAL`
+- **Execution Latency:** `1765.1 ms` | **HTTP Status:** `200` | **Overall Verdict:** `EQUIVALENT_OPTIMAL`
 - **Operator Notes:**
   - `[0]` *"From 6 PM until 9 PM, campus grid import must not exceed 155 kWh in any hour because the feeder is operating under a temporary limit."*
 
@@ -280,7 +280,7 @@ Linear Programming (LP) problems frequently have **degenerate optimal solutions*
 
 ### Case `SAMPLE-06`: Multiple notes with distractor
 
-- **Execution Latency:** `2959.5 ms` | **HTTP Status:** `200` | **Overall Verdict:** `PASS`
+- **Execution Latency:** `2804.5 ms` | **HTTP Status:** `200` | **Overall Verdict:** `PASS`
 - **Operator Notes:**
   - `[0]` *"Cloud cover during panel inspection will leave about half of the forecast solar output from 10 AM until noon."*
   - `[1]` *"The charging circuit will be unavailable from 2 PM until 4 PM."*
@@ -319,7 +319,7 @@ Linear Programming (LP) problems frequently have **degenerate optimal solutions*
 
 ### Case `SAMPLE-07`: Reserve plus transformer cap
 
-- **Execution Latency:** `2390.2 ms` | **HTTP Status:** `200` | **Overall Verdict:** `PASS`
+- **Execution Latency:** `1997.0 ms` | **HTTP Status:** `200` | **Overall Verdict:** `PASS`
 - **Operator Notes:**
   - `[0]` *"Keep at least 90 kWh in the battery from 6 PM until 10 PM for emergency services."*
   - `[1]` *"The evening transformer limit is 180 kWh of grid import from 7 PM until 9 PM."*
@@ -356,7 +356,7 @@ Linear Programming (LP) problems frequently have **degenerate optimal solutions*
 
 ### Case `SAMPLE-08`: Separate charge/discharge outages
 
-- **Execution Latency:** `283.9 ms` | **HTTP Status:** `200` | **Overall Verdict:** `PASS`
+- **Execution Latency:** `2568.5 ms` | **HTTP Status:** `200` | **Overall Verdict:** `PASS`
 - **Operator Notes:**
   - `[0]` *"Battery charging is disabled from 11 AM until 1 PM while technicians inspect the charger."*
   - `[1]` *"Do not discharge the battery from 5 PM until 7 PM during relay testing."*
@@ -393,7 +393,7 @@ Linear Programming (LP) problems frequently have **degenerate optimal solutions*
 
 ### Case `SAMPLE-09`: Reduction wording normalization
 
-- **Execution Latency:** `2414.1 ms` | **HTTP Status:** `200` | **Overall Verdict:** `EQUIVALENT_OPTIMAL`
+- **Execution Latency:** `2240.0 ms` | **HTTP Status:** `200` | **Overall Verdict:** `EQUIVALENT_OPTIMAL`
 - **Operator Notes:**
   - `[0]` *"Expect an 80% reduction in rooftop solar between 11 AM and 2 PM because of inverter work."*
   - `[1]` *"The student affairs office will publish club notices tomorrow."*
@@ -441,7 +441,7 @@ Linear Programming (LP) problems frequently have **degenerate optimal solutions*
 
 ### Case `SAMPLE-10`: Multi-constraint evening operation
 
-- **Execution Latency:** `2637.0 ms` | **HTTP Status:** `200` | **Overall Verdict:** `EQUIVALENT_OPTIMAL`
+- **Execution Latency:** `2990.0 ms` | **HTTP Status:** `200` | **Overall Verdict:** `EQUIVALENT_OPTIMAL`
 - **Operator Notes:**
   - `[0]` *"The data center requires at least 80 kWh to remain in the battery from 6 PM until 10 PM."*
   - `[1]` *"Grid intake must stay at or below 190 kWh from 7 PM until 10 PM while the substation is constrained."*

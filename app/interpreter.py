@@ -313,13 +313,13 @@ _NAMED_PERIODS: dict[str, list[int]] = {
 
 _PERCENT_RE = re.compile(r"(\d+(?:\.\d+)?)\s*(?:%|percent\b|pct\b)", re.I)
 _KWH_RE = re.compile(r"(\d+(?:\.\d+)?)\s*(?:kwh\b|kw\b|kilowatt(?:-|\s)?hours?\b)", re.I)
-_USABLE_PERCENT_RE = re.compile(r"\b(?:to|at|around|only)\s+(?:about|around|roughly|approximately|just)?\s*(\d+(?:\.\d+)?)\s*(?:%|percent\b|pct\b)", re.I)
-_PERCENT_OF_NORMAL_RE = re.compile(r"(\d+(?:\.\d+)?)\s*(?:%|percent|pct)\s+of\s+(?:normal|usual|nominal|rated|expected|typical|full)", re.I)
+_USABLE_PERCENT_RE = re.compile(r"\b(?:to|at|around|only|as)\s+(?:about|around|roughly|approximately|just)?\s*(\d+(?:\.\d+)?)\s*(?:%|percent\b|pct\b)", re.I)
+_PERCENT_OF_NORMAL_RE = re.compile(r"(\d+(?:\.\d+)?)\s*(?:%|percent|pct)\s+of\s+(?:the\s+)?(?:normal|usual|nominal|rated|expected|typical|full|forecast)", re.I)
 
 _SOLAR_RE = re.compile(r"\bsolar\b|\bpv\b|\bpanels?\b", re.I)
 _SOLAR_EVENT_RE = re.compile(
     r"drop|reduc|clean|cloud|shade|shading|dust|haze|smog|overcast|curtail|offline|outage|maintenance|lower|cut|loss|less"
-    r"|limit|unavailab|partial|capped|of\s+(?:normal|usual|nominal|rated|expected|typical|full)|only\s+\d",
+    r"|limit|unavailab|partial|capped|of\s+(?:the\s+)?(?:normal|usual|nominal|rated|expected|typical|full|forecast)|only\s+\d",
     re.I,
 )
 _SOLAR_ZERO_RE = re.compile(r"clean|offline|outage|maintenance|unavailable|disconnect|shut|zero|no solar|off\b", re.I)
@@ -328,7 +328,7 @@ _NO_CHARGE_RE = re.compile(r"do(?:es)?\s*n[o']t\s+charge|don't\s+charge|no\s+cha
 _NO_DISCHARGE_RE = re.compile(r"do(?:es)?\s*n[o']t\s+discharge|don't\s+discharge|not\s+(?:be\s+)?discharg|no\s+discharg|avoid\s+discharging|stop\s+discharging|discharg(?:e|ing)\s+(?:is\s+)?(?:disabled|prohibited|forbidden|suspended)|pause\s+discharging|discharge\s+lockout", re.I)
 _RESERVE_RE = re.compile(r"\breserve|\bstore\b|\bstored\b|keep\s+at\s+least|maintain\s+at\s+least|hold\s+at\s+least|keep\s+(?:the\s+)?battery\s+(?:at|above)|minimum\s+(?:battery|charge|soc|state\s+of\s+charge)|at\s+least\s+\d+(?:\.\d+)?\s*(?:%|percent|kwh)", re.I)
 _GRID_RE = re.compile(r"grid\s+import|grid\s+draw|grid\s+intake|\bintake\b|transformer(?:\s+limit)?|\bfeeder\b|grid\s+(?:supply|power|usage|consumption)|import\s+from\s+(?:the\s+)?grid|utility\s+(?:import|supply)", re.I)
-_GRID_LIMIT_RE = re.compile(r"not\s+exceed|no\s+more\s+than|\bcap(?:ped|s)?\b|stay\s+(?:at\s+or\s+)?below|(?:at\s+or\s+)?under|limit(?:ed)?\s+to|maximum|max\b|ceiling|below|restrict", re.I)
+_GRID_LIMIT_RE = re.compile(r"not\s+exceed|no\s+more\s+than|\bcap(?:ped|s)?\b|stay\s+(?:at\s+or\s+)?below|(?:at\s+or\s+)?under|\blimits?\b|limit(?:ed)?(?:\s+(?:to|is|at|of))?|maximum|max\b|ceiling|below|restrict", re.I)
 
 _DISTRACTOR_RE = re.compile(r"cafeteria|canteen|library|sports?|seminar|workshop|lecture|meeting|party|festival|holiday|parking|garden|lunch|dinner|visitor|tour|cleaning\s+(?:crew|staff)|hr\b|payroll|birthday", re.I)
 
