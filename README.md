@@ -6,7 +6,7 @@
 
 | Submission Deliverable | Value / Reference Link |
 | :--- | :--- |
-| **Docker Fallback Image** | `docker pull <dockerhub-username>/gridwise:latest` (or `ghcr.io/<username>/gridwise:latest`) |
+| **Docker Fallback Image** | `hub.docker.io/akulbiswas/bup-preli`) |
 | **Docker Hub Registry Link** | [hub.docker.io/akulbiswas/bup-preli) |
 | **Live Deployed API URL** | `(https://bup-prelie.vercel.app/)` |
 | **Endpoints Exposed** | `GET /health` & `POST /optimize-energy` (Port `8000`) |
