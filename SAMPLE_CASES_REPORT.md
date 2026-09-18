@@ -494,10 +494,3 @@ Linear Programming (LP) problems frequently have **degenerate optimal solutions*
 | `H15` | `battery_action` | `charge` | `idle` | `-` |
 | `H15` | `battery_kwh` | `20.0` | `0.0` | `-20.00` |
 
----
-
-## 4. Key Findings & Recommendations
-
-1. **Cost Optimality:** The solver achieves the exact optimal cost (0.00 BDT difference) across cases, confirming that the linear programming formulation matches the problem specifications.
-2. **Directive Compliance:** Natural-language operator notes (cleaning windows, maintenance lockouts, emergency battery reserves, and transformer limits) are correctly translated and enforced.
-3. **Schedule Variance & Peak Demand:** In scenarios like `SAMPLE-09`, multiple charging schedules yield identical daily cost under uniform off-peak tariffs. Adding a slight secondary objective weighting for peak shaving will make the solver prioritize flatter grid profiles when tariffs are tied.
