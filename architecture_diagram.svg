@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="blueGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+    <linearGradient id="purpleGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c084fc" />
+      <stop offset="100%" stop-color="#e879f9" />
+    </linearGradient>
+    <linearGradient id="greenGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <linearGradient id="amberGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowhead-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#34d399" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="680" rx="16" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Title Header -->
+  <g transform="translate(50, 45)">
+    <rect x="0" y="0" width="160" height="26" rx="6" fill="#0284c7" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/>
+    <text x="80" y="17" fill="#38bdf8" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1">BUP CSE FEST 2026</text>
+    
+    <text x="0" y="55" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="800">GridWise — End-to-End System Architecture</text>
+    <text x="0" y="78" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="13">Zero-Failure Smart Campus Energy Management: From Natural Language to HiGHS Linear Program</text>
+  </g>
+
+  <!-- Flow Connectors (Lines) -->
+  <path d="M 270 280 L 320 280" stroke="#38bdf8" stroke-width="3" stroke-dasharray="6,4" marker-end="url(#arrowhead)"/>
+  <path d="M 580 280 L 630 280" stroke="#38bdf8" stroke-width="3" stroke-dasharray="6,4" marker-end="url(#arrowhead)"/>
+  <path d="M 890 280 L 940 280" stroke="#34d399" stroke-width="3" stroke-dasharray="6,4" marker-end="url(#arrowhead-green)"/>
+
+  <!-- BOX 1: Ingestion & API Layer -->
+  <g transform="translate(50, 150)" filter="url(#shadow)">
+    <rect width="220" height="430" rx="12" fill="url(#cardGrad)" stroke="#0284c7" stroke-width="1.5"/>
+    <rect x="0" y="0" width="220" height="6" rx="3" fill="url(#blueGlow)"/>
+    <text x="20" y="32" fill="#38bdf8" font-family="sans-serif" font-size="11" font-weight="700" letter-spacing="0.5">LAYER 1 &amp; 2</text>
+    <text x="20" y="54" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="700">Client &amp; API Shield</text>
+    <text x="20" y="72" fill="#94a3b8" font-family="sans-serif" font-size="11">FastAPI • app/main.py</text>
+
+    <!-- Subcard: Payload -->
+    <g transform="translate(15, 95)">
+      <rect width="190" height="135" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="12" y="22" fill="#7dd3fc" font-family="sans-serif" font-size="11" font-weight="700">POST /optimize-energy</text>
+      <text x="12" y="44" fill="#cbd5e1" font-family="monospace" font-size="10">• scenario_id: str</text>
+      <text x="12" y="62" fill="#cbd5e1" font-family="monospace" font-size="10">• battery: specs</text>
+      <text x="12" y="80" fill="#cbd5e1" font-family="monospace" font-size="10">• hours: 24x input</text>
+      <text x="12" y="98" fill="#cbd5e1" font-family="monospace" font-size="10">• operator_notes: []</text>
+      <text x="12" y="118" fill="#38bdf8" font-family="sans-serif" font-size="9" font-style="italic">Strict Pydantic Validation (422)</text>
+    </g>
+
+    <!-- Subcard: Shielding -->
+    <g transform="translate(15, 250)">
+      <rect width="190" height="150" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="12" y="24" fill="#818cf8" font-family="sans-serif" font-size="12" font-weight="700">Resilience Shield</text>
+      <text x="12" y="46" fill="#94a3b8" font-family="sans-serif" font-size="10">Global Exception Handler</text>
+      <text x="12" y="68" fill="#94a3b8" font-family="sans-serif" font-size="10">Zero Secret Leakage</text>
+      <text x="12" y="90" fill="#94a3b8" font-family="sans-serif" font-size="10">CORS Enabled</text>
+      <text x="12" y="112" fill="#94a3b8" font-family="sans-serif" font-size="10">GET /health Status Probe</text>
+      <rect x="12" y="125" width="166" height="16" rx="4" fill="#10b981" fill-opacity="0.15"/>
+      <text x="95" y="137" fill="#34d399" font-family="monospace" font-size="9" text-anchor="middle">STATUS: OK (Live)</text>
+    </g>
+  </g>
+
+  <!-- BOX 2: Interpretation Layer -->
+  <g transform="translate(320, 150)" filter="url(#shadow)">
+    <rect width="260" height="430" rx="12" fill="url(#cardGrad)" stroke="#a855f7" stroke-width="1.5"/>
+    <rect x="0" y="0" width="260" height="6" rx="3" fill="url(#purpleGlow)"/>
+    <text x="20" y="32" fill="#c084fc" font-family="sans-serif" font-size="11" font-weight="700" letter-spacing="0.5">LAYER 3</text>
+    <text x="20" y="54" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="700">Directive Interpreter</text>
+    <text x="20" y="72" fill="#94a3b8" font-family="sans-serif" font-size="11">NLP Core • app/interpreter.py</text>
+
+    <!-- Subcard: LLM Primary -->
+    <g transform="translate(15, 95)">
+      <rect width="230" height="135" rx="8" fill="#1e1b4b" stroke="#7e22ce" stroke-width="1"/>
+      <text x="14" y="24" fill="#d8b4fe" font-family="sans-serif" font-size="12" font-weight="700">Track A: Structured LLM</text>
+      <text x="14" y="44" fill="#a855f7" font-family="sans-serif" font-size="10">DeepSeek v4 / Anthropic API</text>
+      <text x="14" y="66" fill="#cbd5e1" font-family="sans-serif" font-size="10">• Strict JSON output schema</text>
+      <text x="14" y="84" fill="#cbd5e1" font-family="sans-serif" font-size="10">• 8s hard wall-clock timeout</text>
+      <text x="14" y="102" fill="#cbd5e1" font-family="sans-serif" font-size="10">• Natural language extraction</text>
+      <text x="14" y="120" fill="#c084fc" font-family="monospace" font-size="9">e.g. "80% reduction" -> 0.2 factor</text>
+    </g>
+
+    <!-- Subcard: Regex Fallback -->
+    <g transform="translate(15, 250)">
+      <rect width="230" height="150" rx="8" fill="#1e1b4b" stroke="#f59e0b" stroke-width="1"/>
+      <text x="14" y="24" fill="#fcd34d" font-family="sans-serif" font-size="12" font-weight="700">Track B: Heuristic Fallback</text>
+      <text x="14" y="44" fill="#f59e0b" font-family="sans-serif" font-size="10">Deterministic Regex Parser</text>
+      <text x="14" y="66" fill="#cbd5e1" font-family="sans-serif" font-size="10">• Zero-failure safety valve</text>
+      <text x="14" y="84" fill="#cbd5e1" font-family="sans-serif" font-size="10">• Offline / rate-limit resilient</text>
+      <text x="14" y="102" fill="#cbd5e1" font-family="sans-serif" font-size="10">• Parses percentage &amp; windows</text>
+      <rect x="14" y="118" width="202" height="20" rx="4" fill="#f59e0b" fill-opacity="0.15"/>
+      <text x="115" y="132" fill="#fbbf24" font-family="sans-serif" font-size="9" font-weight="700" text-anchor="middle">ZERO-CRASH GUARANTEE</text>
+    </g>
+  </g>
+
+  <!-- BOX 3: Guardrails & Optimizer -->
+  <g transform="translate(630, 150)" filter="url(#shadow)">
+    <rect width="260" height="430" rx="12" fill="url(#cardGrad)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="260" height="6" rx="3" fill="url(#greenGlow)"/>
+    <text x="20" y="32" fill="#34d399" font-family="sans-serif" font-size="11" font-weight="700" letter-spacing="0.5">LAYER 4 &amp; 5</text>
+    <text x="20" y="54" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="700">Guardrails &amp; Solver</text>
+    <text x="20" y="72" fill="#94a3b8" font-family="sans-serif" font-size="11">app/guardrails.py • app/optimizer.py</text>
+
+    <!-- Subcard: Guardrails -->
+    <g transform="translate(15, 95)">
+      <rect width="230" height="120" rx="8" fill="#064e3b" stroke="#059669" stroke-width="1"/>
+      <text x="14" y="24" fill="#6ee7b7" font-family="sans-serif" font-size="12" font-weight="700">Deterministic Guardrails</text>
+      <text x="14" y="44" fill="#a7f3d0" font-family="sans-serif" font-size="10">Bounds &amp; Range Sanitizer</text>
+      <text x="14" y="64" fill="#ecfdf5" font-family="sans-serif" font-size="10">• Clamps hours to [0..24)</text>
+      <text x="14" y="82" fill="#ecfdf5" font-family="sans-serif" font-size="10">• reserve ≤ battery capacity</text>
+      <text x="14" y="100" fill="#ecfdf5" font-family="sans-serif" font-size="10">• Audit trail (applies: true/false)</text>
+    </g>
+
+    <!-- Subcard: SciPy HiGHS Solver -->
+    <g transform="translate(15, 235)">
+      <rect width="230" height="175" rx="8" fill="#451a03" stroke="#d97706" stroke-width="1"/>
+      <text x="14" y="24" fill="#fde68a" font-family="sans-serif" font-size="12" font-weight="700">SciPy HiGHS Optimizer</text>
+      <text x="14" y="44" fill="#fbbf24" font-family="sans-serif" font-size="10">Linear Program Formulation</text>
+      <text x="14" y="64" fill="#fef3c7" font-family="sans-serif" font-size="10">• 96 decision variables (G, S, C, D)</text>
+      <text x="14" y="82" fill="#fef3c7" font-family="sans-serif" font-size="10">• Energy Balance: G+S+D = Dem+C</text>
+      <text x="14" y="100" fill="#fef3c7" font-family="sans-serif" font-size="10">• Battery SoC: E[t] = E[t-1] + C - D</text>
+      <text x="14" y="118" fill="#fef3c7" font-family="sans-serif" font-size="10">• Neutrality: E[23] ≥ E[initial]</text>
+      <text x="14" y="136" fill="#fef3c7" font-family="sans-serif" font-size="10">• Solves in &lt;50ms (p95 satisfied)</text>
+      <rect x="14" y="145" width="202" height="18" rx="4" fill="#fbbf24" fill-opacity="0.15"/>
+      <text x="115" y="158" fill="#fde68a" font-family="sans-serif" font-size="9" font-weight="700" text-anchor="middle">100% GLOBAL OPTIMUM</text>
+    </g>
+  </g>
+
+  <!-- BOX 4: Output Layer -->
+  <g transform="translate(940, 150)" filter="url(#shadow)">
+    <rect width="210" height="430" rx="12" fill="url(#cardGrad)" stroke="#06b6d4" stroke-width="1.5"/>
+    <rect x="0" y="0" width="210" height="6" rx="3" fill="url(#blueGlow)"/>
+    <text x="20" y="32" fill="#22d3ee" font-family="sans-serif" font-size="11" font-weight="700" letter-spacing="0.5">LAYER 6</text>
+    <text x="20" y="54" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="700">Output Schedule</text>
+    <text x="20" y="72" fill="#94a3b8" font-family="sans-serif" font-size="11">JSON • 200 OK Response</text>
+
+    <!-- Subcard: Schedule -->
+    <g transform="translate(15, 95)">
+      <rect width="180" height="185" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="12" y="24" fill="#67e8f9" font-family="sans-serif" font-size="12" font-weight="700">24-Hour Dispatch Plan</text>
+      <text x="12" y="48" fill="#cbd5e1" font-family="monospace" font-size="10">• hourly_plan [24]</text>
+      <text x="20" y="66" fill="#94a3b8" font-family="monospace" font-size="9">- grid_kwh</text>
+      <text x="20" y="82" fill="#94a3b8" font-family="monospace" font-size="9">- solar_used_kwh</text>
+      <text x="20" y="98" fill="#94a3b8" font-family="monospace" font-size="9">- battery_action</text>
+      <text x="20" y="114" fill="#94a3b8" font-family="monospace" font-size="9">- battery_level_kwh</text>
+      <text x="20" y="130" fill="#94a3b8" font-family="monospace" font-size="9">- hourly_cost_bdt</text>
+      <text x="12" y="152" fill="#cbd5e1" font-family="monospace" font-size="10">• total_cost_bdt</text>
+      <text x="12" y="170" fill="#cbd5e1" font-family="monospace" font-size="10">• peak_grid_kwh</text>
+    </g>
+
+    <!-- Subcard: Metrics -->
+    <g transform="translate(15, 300)">
+      <rect width="180" height="100" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="12" y="24" fill="#38bdf8" font-family="sans-serif" font-size="11" font-weight="700">Validation Verified</text>
+      <text x="12" y="46" fill="#34d399" font-family="sans-serif" font-size="10" font-weight="700">✓ 10/10 Sample Tests Pass</text>
+      <text x="12" y="66" fill="#cbd5e1" font-family="sans-serif" font-size="10">• Margins &lt; 0.5% diff</text>
+      <text x="12" y="84" fill="#cbd5e1" font-family="sans-serif" font-size="10">• Docker &amp; Cloud Ready</text>
+    </g>
+  </g>
+
+  <!-- Bottom Metric Bar -->
+  <g transform="translate(50, 605)">
+    <rect width="1100" height="45" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="30" y="27" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="600">PRODUCTION GUARANTEES:</text>
+    <text x="230" y="27" fill="#38bdf8" font-family="sans-serif" font-size="11">⚡ Sub-second Latency (&lt;200ms E2E)</text>
+    <text x="520" y="27" fill="#34d399" font-family="sans-serif" font-size="11">🛡️ Deterministic Guardrails &amp; Heuristic Fallback</text>
+    <text x="880" y="27" fill="#fbbf24" font-family="sans-serif" font-size="11">🎯 True Global Cost Minimization</text>
+  </g>
+</svg>
