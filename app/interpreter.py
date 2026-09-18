@@ -17,7 +17,6 @@ from __future__ import annotations
 import json
 import logging
 import math
-import os
 import re
 from concurrent.futures import ThreadPoolExecutor
 from concurrent.futures import TimeoutError as FutureTimeoutError
@@ -28,6 +27,7 @@ try:  # Imported eagerly so the first request does not pay the SDK import cost i
 except ImportError:  # pragma: no cover - the fallback parser still works without the SDK
     anthropic = None  # type: ignore[assignment]
 
+from app import config
 from app.guardrails import validate_and_sanitize_directives
 from app.schemas import (
     BatteryConfig,
@@ -45,9 +45,12 @@ logger = logging.getLogger(__name__)
 # Configuration
 # ---------------------------------------------------------------------------
 
-DEFAULT_MODEL_ID = "claude-haiku-4-5"
-LLM_MODEL_ID = os.getenv("LLM_MODEL_ID", DEFAULT_MODEL_ID).strip() or DEFAULT_MODEL_ID
-LLM_TIMEOUT_SECONDS = 4.0
+# API key, base URL and model id are read from the environment / .env via app.config.
+DEFAULT_MODEL_ID = config.DEFAULT_MODEL_ID
+LLM_MODEL_ID = config.LLM_MODEL_ID
+LLM_API_KEY = config.LLM_API_KEY
+LLM_BASE_URL = config.LLM_BASE_URL
+LLM_TIMEOUT_SECONDS = config.LLM_TIMEOUT_SECONDS
 LLM_MAX_TOKENS = 1024
 
 ALL_HOURS: list[int] = list(range(24))
@@ -100,7 +103,10 @@ _SYSTEM_PROMPT = (
     "Hours: integers 0-23, start-inclusive, end-exclusive: '1 PM to 3 PM'->[13,14], "
     "'11 AM until 2 PM'->[11,12,13]. No time window -> all 24 hours.\n"
     "One entry per note, note_index = note position. Unused numeric fields null. "
-    "explanation <= 20 words."
+    "explanation <= 20 words.\n"
+    "Output exactly this shape and these field names: {\"directives\": [{\"note_index\": int, "
+    "\"directive_type\": string, \"applies\": bool, \"hours\": [int], \"factor\": number|null, "
+    "\"minimum_energy_kwh\": number|null, \"max_grid_kwh\": number|null, \"explanation\": string}]}"
 )
 
 
@@ -190,7 +196,15 @@ def _request_structured_directives(notes: list[str], battery: BatteryConfig) -> 
     if anthropic is None:
         raise RuntimeError("anthropic SDK is not installed")
 
-    client = anthropic.Anthropic().with_options(timeout=LLM_TIMEOUT_SECONDS, max_retries=0)
+    if not LLM_API_KEY:
+        raise RuntimeError("ANTHROPIC_API_KEY is not set (check your .env file)")
+
+    client = anthropic.Anthropic(
+        api_key=LLM_API_KEY,
+        base_url=LLM_BASE_URL or None,
+        timeout=LLM_TIMEOUT_SECONDS,
+        max_retries=0,
+    )
     user_content = json.dumps(
         {
             "battery_capacity_kwh": battery.capacity_kwh,
@@ -203,6 +217,7 @@ def _request_structured_directives(notes: list[str], battery: BatteryConfig) -> 
         max_tokens=LLM_MAX_TOKENS,
         system=_SYSTEM_PROMPT,
         messages=[{"role": "user", "content": user_content}],
+        thinking={"type": "disabled"},
         output_config={"format": {"type": "json_schema", "schema": _OUTPUT_SCHEMA}},
     )
     if response.stop_reason not in (None, "end_turn", "stop_sequence"):
@@ -238,9 +253,11 @@ def _records_from_payload(payload: dict[str, Any], note_count: int) -> list[dict
         idx = item.get("note_index")
         if not isinstance(idx, int) or isinstance(idx, bool) or not (0 <= idx < note_count):
             continue
-        dtype = str(item.get("directive_type", "")).strip().lower()
+        dtype = str(item.get("directive_type") or item.get("type") or "").strip().lower()
         if dtype not in _DIRECTIVE_VALUES:
             continue
+        if item.get("minimum_energy_kwh") is None and item.get("minimum_battery_reserve") is not None:
+            item["minimum_energy_kwh"] = item.get("minimum_battery_reserve")
         hours = item.get("hours") if isinstance(item.get("hours"), list) else []
         if dtype != DirectiveType.NO_OP.value and not hours:
             hours = ALL_HOURS

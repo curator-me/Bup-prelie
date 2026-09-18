@@ -21,6 +21,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
+from app import config  # noqa: F401 - loads .env before anything reads the environment
 from app import guardrails, interpreter, optimizer
 from app.schemas import HealthResponse, OptimizeEnergyRequest, OptimizeEnergyResponse
 
