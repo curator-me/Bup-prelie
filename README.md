@@ -2,7 +2,14 @@
 
 **Event:** BUP CSE FEST 2026 (Preliminary Round)  
 **Track:** Smart Campus Energy Optimization  
-**Service Type:** Unified REST API (FastAPI + Pydantic v2 + SciPy HiGHS)
+**Service Type:** Unified REST API (FastAPI + Pydantic v2 + SciPy HiGHS)  
+
+| Submission Deliverable | Value / Reference Link |
+| :--- | :--- |
+| **Docker Fallback Image** | `docker pull <dockerhub-username>/gridwise:latest` (or `ghcr.io/<username>/gridwise:latest`) |
+| **Docker Hub Registry Link** | [hub.docker.io/akulbiswas/bup-preli) |
+| **Live Deployed API URL** | `(https://bup-prelie.vercel.app/)` |
+| **Endpoints Exposed** | `GET /health` & `POST /optimize-energy` (Port `8000`) |
 
 GridWise is an end-to-end smart campus energy optimization service that translates unstructured natural language operator notes into mathematical constraints and schedules 24-hour battery and grid dispatch via a high-performance Linear Programming solver.
 
